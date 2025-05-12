@@ -93,6 +93,9 @@ body {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity var(--transition-slow), transform var(--transition-slow);
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
 }
 
 .main-menu.active {
@@ -111,6 +114,8 @@ body {
   cursor: pointer;
   transition: all var(--transition-medium);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  min-width: 220px;
+  text-align: center;
 }
 
 .menu-button:hover {
