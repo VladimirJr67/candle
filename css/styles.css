@@ -88,15 +88,15 @@ body {
 .main-menu {
   display: none;
   flex-direction: column;
-  gap: 20px;
-  padding: 20px 0;
+  gap: 40px;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity var(--transition-slow), transform var(--transition-slow);
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  min-height: 100vh;
   width: 100%;
+  padding: 0;
 }
 
 .main-menu.active {
