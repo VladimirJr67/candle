@@ -5,6 +5,8 @@
   --accent-color: #ff9eb5;
   --text-color: #4a4a4a;
   --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --transition-slow: 0.8s ease;
+  --transition-medium: 0.5s ease;
 }
 
 body {
@@ -32,8 +34,8 @@ body {
   min-height: 100vh;
   text-align: center;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
 .welcome-screen.active {
@@ -55,13 +57,31 @@ body {
   border-radius: 30px;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-medium), box-shadow var(--transition-medium);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .enter-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.website-link {
+  display: inline-block;
+  padding: 12px 30px;
+  background: white;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all var(--transition-medium);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.website-link:hover {
+  transform: translateY(-2px);
+  background: var(--accent-color);
+  color: white;
 }
 
 /* Основное меню */
@@ -71,8 +91,8 @@ body {
   gap: 20px;
   padding: 20px;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
 .main-menu.active {
@@ -89,7 +109,7 @@ body {
   border-radius: 25px;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-medium);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -107,8 +127,8 @@ body {
   border-radius: 20px;
   margin-top: 20px;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
 }
 
 .content-section.active {
@@ -120,6 +140,26 @@ body {
 .content-section h2 {
   color: var(--text-color);
   margin-bottom: 20px;
+}
+
+/* Кнопка назад */
+.back-button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 12px 30px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Социальные ссылки */
@@ -136,7 +176,7 @@ body {
   color: white;
   text-decoration: none;
   border-radius: 20px;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-medium);
 }
 
 .social-link:hover {
@@ -159,7 +199,7 @@ body {
   border-radius: 15px;
   text-decoration: none;
   color: var(--text-color);
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-medium);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
