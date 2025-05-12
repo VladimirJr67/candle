@@ -96,6 +96,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 60vh;
+  width: 100%;
 }
 
 .main-menu.active {
@@ -114,8 +115,12 @@ body {
   cursor: pointer;
   transition: all var(--transition-medium);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  min-width: 220px;
+  min-width: 240px;
+  max-width: 90vw;
+  width: 100%;
   text-align: center;
+  margin: 0 auto;
+  display: block;
 }
 
 .menu-button:hover {
