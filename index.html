@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Семья свечеваров</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <!-- Приветственный экран -->
+    <div class="welcome-screen active" id="welcomeScreen">
+      <h1>Добро пожаловать в семью свечеваров</h1>
+      <button class="enter-button" id="enterButton">Войти</button>
+    </div>
+
+    <!-- Основное меню -->
+    <div class="main-menu" id="mainMenu">
+      <button class="menu-button" data-section="about">О нас</button>
+      <button class="menu-button" data-section="social">Наши соц сети</button>
+      <button class="menu-button" data-section="products">Наша продукция</button>
+    </div>
+
+    <!-- Секции контента -->
+    <div class="content-section" id="aboutSection">
+      <h2>О нас</h2>
+      <p>Здесь пока пусто, но нам есть что рассказать</p>
+    </div>
+
+    <div class="content-section" id="socialSection">
+      <h2>Наши соц сети</h2>
+      <div class="social-links">
+        <a href="https://t.me/thecandlefamily" target="_blank" class="social-link">Телеграм</a>
+        <a href="https://vk.com/candlefamily" target="_blank" class="social-link">ВКонтакте</a>
+      </div>
+    </div>
+
+    <div class="content-section" id="productsSection">
+      <h2>Наша продукция</h2>
+      <div class="marketplace-links">
+        <a href="https://www.wildberries.ru/brands/311067087-semya-svechevarov" target="_blank" class="marketplace-link">
+          <img src="img/wildberries-icon.png" alt="Wildberries">
+          <span>Wildberries</span>
+        </a>
+        <a href="https://www.ozon.ru/category/izgotovlenie-svechey-13829/semya-svechevarov-101249599/" target="_blank" class="marketplace-link">
+          <img src="img/ozon-icon.png" alt="Ozon">
+          <span>Ozon</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
