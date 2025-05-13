@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     products: document.getElementById('productsSection')
   };
 
+  // История экранов
+  let screenHistory = [];
+
   // Проверка наличия всех необходимых элементов
   function validateElements() {
     for (const [key, element] of Object.entries(screens)) {
@@ -29,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Установка начального состояния
     Object.values(screens).forEach(screen => screen.classList.remove('active'));
     screens.welcome.classList.add('active');
+    screenHistory = [];
 
     // Кнопка "Войти"
     const enterButton = document.getElementById('enterButton');
@@ -52,35 +56,25 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('[data-back]').forEach(btn => {
       btn.addEventListener('click', function() {
         const currentScreen = getCurrentScreen();
-        const targetScreen = this.dataset.back;
-        
-        console.log('Текущий экран:', currentScreen);
-        console.log('Целевой экран:', targetScreen);
-        
-        if (!currentScreen) {
-          console.error('Не удалось определить текущий экран');
-          return;
+        const previousScreen = screenHistory.pop();
+        if (previousScreen && screens[previousScreen]) {
+          switchScreen(currentScreen, previousScreen, false);
+        } else {
+          switchScreen(currentScreen, 'menu', false);
         }
-        
-        if (!screens[targetScreen]) {
-          console.error(`Целевой экран ${targetScreen} не найден`);
-          return;
-        }
-        
-        switchScreen(currentScreen, targetScreen);
       });
     });
   }
 
   // Переключение экранов
-  function switchScreen(from, to) {
+  function switchScreen(from, to, saveHistory = true) {
     if (!screens[from] || !screens[to]) {
       console.error('Попытка переключения на несуществующий экран');
       return;
     }
-    
-    console.log(`Переключение с ${from} на ${to}`);
-    
+    if (saveHistory) {
+      screenHistory.push(from);
+    }
     screens[from].classList.remove('active');
     screens[to].classList.add('active');
   }
@@ -88,7 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Получение текущего экрана
   function getCurrentScreen() {
     const currentScreen = Object.keys(screens).find(key => screens[key].classList.contains('active'));
-    console.log('Определен текущий экран:', currentScreen);
     return currentScreen;
   }
 
