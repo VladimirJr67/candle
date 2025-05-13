@@ -1,11 +1,4 @@
-/* Сброс стилей */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Основные переменные */
+/* Основные стили */
 :root {
   --primary: #ffd1dc;
   --accent: #ff9eb5;
@@ -13,70 +6,67 @@
   --white: #ffffff;
 }
 
-/* Базовые стили */
 body {
   font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
-  background-color: #f5f5f5; /* Фон по умолчанию */
+  background-color: #f8f8f8;
 }
 
 .app {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  overflow: hidden;
 }
 
-/* Общие стили экранов */
+/* Экранные стили */
 .screen {
   position: absolute;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  display: none;
+  box-sizing: border-box;
 }
 
 .screen.active {
   display: flex;
 }
 
-/* Фоновые изображения */
+/* Фоны */
 .welcome-screen {
-  background: url('../img/bg-main.png') center/cover no-repeat;
+  background: url('../img/bg-main.jpg') center/cover no-repeat;
 }
 
 .menu-screen {
-  background: url('../img/bg-menu.png') center/cover no-repeat;
+  background: url('../img/bg-menu.jpg') center/cover no-repeat;
 }
 
-/* Контейнер контента */
+.content-section {
+  background: rgba(255, 255, 255, 0.98);
+}
+
+/* Блок контента */
 .content-box {
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
+  padding: 30px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
-  padding: 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-/* Заголовок */
-.main-title {
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 30px;
-  line-height: 1.4;
-}
-
-/* Стили кнопок */
+/* Кнопки */
 .btn {
   display: block;
   width: 100%;
-  padding: 14px;
-  margin: 10px 0;
+  padding: 14px 20px;
+  margin: 12px 0;
   border-radius: 25px;
   font-size: 1rem;
   font-weight: 500;
@@ -87,27 +77,32 @@ body {
   border: none;
 }
 
-/* Основная кнопка */
-.btn:not(.site-link) {
+/* Стили кнопок */
+.btn:not(.site-link):not(.social-btn) {
   background: var(--accent);
   color: var(--white);
-  box-shadow: 0 4px 10px rgba(255, 158, 181, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 158, 181, 0.4);
 }
 
-/* Кнопка "Наш сайт" */
 .site-link {
   background: var(--white);
   color: var(--text);
   border: 2px solid var(--accent);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* Ховер-эффекты */
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+.social-btn {
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  color: var(--white);
 }
 
-.btn:active {
-  transform: translateY(1px);
+/* Адаптив */
+@media (max-width: 400px) {
+  .content-box {
+    padding: 25px 20px;
+    max-width: 280px;
+  }
+  
+  .btn {
+    padding: 12px 16px;
+  }
 }
