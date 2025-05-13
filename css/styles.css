@@ -40,7 +40,7 @@ body {
 
 /* Фоны */
 .welcome-screen {
-  background: url('../img/main-bg.jpg') center/cover no-repeat;
+  background: url('../img/welcome-bg.jpg') center/cover no-repeat;
 }
 
 .menu-screen {

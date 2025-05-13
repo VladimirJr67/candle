@@ -53,9 +53,21 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.addEventListener('click', function() {
         const currentScreen = getCurrentScreen();
         const targetScreen = this.dataset.back;
-        if (currentScreen && screens[targetScreen]) {
-          switchScreen(currentScreen, targetScreen);
+        
+        console.log('Текущий экран:', currentScreen);
+        console.log('Целевой экран:', targetScreen);
+        
+        if (!currentScreen) {
+          console.error('Не удалось определить текущий экран');
+          return;
         }
+        
+        if (!screens[targetScreen]) {
+          console.error(`Целевой экран ${targetScreen} не найден`);
+          return;
+        }
+        
+        switchScreen(currentScreen, targetScreen);
       });
     });
   }
@@ -66,13 +78,18 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Попытка переключения на несуществующий экран');
       return;
     }
+    
+    console.log(`Переключение с ${from} на ${to}`);
+    
     screens[from].classList.remove('active');
     screens[to].classList.add('active');
   }
 
   // Получение текущего экрана
   function getCurrentScreen() {
-    return Object.keys(screens).find(key => screens[key].classList.contains('active'));
+    const currentScreen = Object.keys(screens).find(key => screens[key].classList.contains('active'));
+    console.log('Определен текущий экран:', currentScreen);
+    return currentScreen;
   }
 
   // Запуск
