@@ -5,31 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Семья свечеваров</title>
   <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="app">
     <!-- Приветственный экран -->
-    <div class="welcome-screen" id="welcomeScreen">
-      <h1 class="animated-title">Добро пожаловать в семью свечеваров</h1>
-      <button class="enter-button" id="enterButton">Войти</button>
-      <a href="https://candlefamily.ru" target="_blank" class="website-link">Наш сайт</a>
+    <div class="welcome-screen active" id="welcomeScreen">
+      <div class="content-wrapper">
+        <h1 class="welcome-title">Добро пожаловать в семью свечеваров</h1>
+        <button class="enter-button" id="enterButton">Войти</button>
+        <a href="https://candlefamily.ru" target="_blank" class="action-button">Наш сайт</a>
+      </div>
     </div>
 
     <!-- Основное меню -->
     <div class="main-menu" id="mainMenu">
-      <button class="menu-button" data-section="about">О нас</button>
-      <button class="menu-button" data-section="social">Наши соц сети</button>
-      <button class="menu-button" data-section="products">Наша продукция</button>
+      <div class="content-wrapper">
+        <button class="menu-button" data-section="about">О нас</button>
+        <button class="menu-button" data-section="social">Наши соц сети</button>
+        <button class="menu-button" data-section="products">Наша продукция</button>
+        <a href="https://candlefamily.ru" target="_blank" class="action-button menu-action-button">Наш сайт</a>
+      </div>
     </div>
 
-    <!-- Секции контента -->
+    <!-- Секция "О нас" -->
     <div class="content-section" id="aboutSection">
       <h2>О нас</h2>
       <p>Здесь пока пусто, но нам есть что рассказать</p>
       <button class="back-button" data-back="mainMenu">Назад</button>
     </div>
 
+    <!-- Секция "Соц сети" -->
     <div class="content-section" id="socialSection">
       <h2>Наши соц сети</h2>
       <div class="social-links">
@@ -39,6 +45,7 @@
       <button class="back-button" data-back="mainMenu">Назад</button>
     </div>
 
+    <!-- Секция "Продукция" -->
     <div class="content-section" id="productsSection">
       <h2>Наша продукция</h2>
       <div class="marketplace-links">
