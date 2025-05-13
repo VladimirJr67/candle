@@ -23,15 +23,30 @@ body {
   overflow: hidden;
 }
 
-/* Анимации */
-@keyframes text-focus-in {
-  0% { filter: blur(12px); opacity: 0; }
-  100% { filter: blur(0); opacity: 1; }
+/* Анимации из Animista */
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 1em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
 }
 
 @keyframes slide-fwd-top {
-  0% { transform: translateY(-20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Приветственный экран */
@@ -52,19 +67,19 @@ body {
   display: flex;
 }
 
-.welcome-screen h1 {
+.welcome-screen h1.animated-title {
   font-size: 1.8rem;
   margin-bottom: 30px;
   font-weight: 600;
-  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+  animation: tracking-in-contract 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
 .welcome-screen .enter-button {
-  animation: slide-fwd-top 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s both;
+  animation: slide-fwd-top 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s both;
 }
 
 .welcome-screen .website-link {
-  animation: slide-fwd-top 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s both;
+  animation: slide-fwd-top 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.1s both;
 }
 
 /* Основное меню */
@@ -182,13 +197,6 @@ body {
   width: 32px;
   height: 32px;
   object-fit: contain;
-}
-
-/* Ховер-эффекты */
-button:hover, 
-a:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
 }
 
 /* Адаптация для маленьких экранов */
