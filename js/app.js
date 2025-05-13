@@ -10,22 +10,27 @@ const menuButtons = document.querySelectorAll('.menu-button');
 const contentSections = document.querySelectorAll('.content-section');
 const backButtons = document.querySelectorAll('.back-button');
 
-// Функция для плавного перехода между экранами
+// Оптимизированная функция перехода
 function transitionTo(element) {
-  element.style.display = 'block';
-  // Даем время для применения display: block
-  setTimeout(() => {
+  element.style.display = 'flex'; // Используем flex вместо block для корректного центрирования
+  element.style.opacity = '0'; // Сбрасываем opacity перед анимацией
+  
+  // Даем время для применения стилей
+  requestAnimationFrame(() => {
     element.classList.add('active');
-  }, 50);
+  });
 }
 
-// Функция для плавного скрытия экрана
+// Оптимизированная функция скрытия
 function transitionFrom(element) {
   element.classList.remove('active');
+  
   // Ждем завершения анимации
   setTimeout(() => {
-    element.style.display = 'none';
-  }, 800); // Должно совпадать с --transition-slow в CSS
+    if (!element.classList.contains('active')) {
+      element.style.display = 'none';
+    }
+  }, 400); // Сократил время до 400ms (совпадает с CSS)
 }
 
 // Обработчик кнопки "Войти"
@@ -38,11 +43,8 @@ enterButton.addEventListener('click', () => {
 menuButtons.forEach(button => {
   button.addEventListener('click', () => {
     const targetSection = button.getAttribute('data-section');
-    
-    // Скрываем главное меню
     transitionFrom(mainMenu);
     
-    // Показываем нужную секцию
     const section = document.getElementById(`${targetSection}Section`);
     transitionTo(section);
   });
@@ -52,19 +54,18 @@ menuButtons.forEach(button => {
 backButtons.forEach(button => {
   button.addEventListener('click', () => {
     const targetSection = button.closest('.content-section');
-    
-    // Скрываем текущую секцию
     transitionFrom(targetSection);
-    
-    // Показываем главное меню
     transitionTo(mainMenu);
   });
 });
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
-  // Показываем приветственный экран
+  // Показываем приветственный экран с небольшой задержкой
   setTimeout(() => {
-    welcomeScreen.classList.add('active');
+    welcomeScreen.style.display = 'flex';
+    requestAnimationFrame(() => {
+      welcomeScreen.classList.add('active');
+    });
   }, 100);
 });
