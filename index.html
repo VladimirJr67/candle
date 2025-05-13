@@ -10,21 +10,21 @@
 <body>
   <div class="app">
     <!-- Приветственный экран -->
-    <div class="welcome-screen active" id="welcomeScreen">
-      <div class="content-wrapper">
-        <h1 class="welcome-title">Добро пожаловать в семью свечеваров</h1>
-        <button class="enter-button" id="enterButton">Войти</button>
-        <a href="https://candlefamily.ru" target="_blank" class="action-button">Наш сайт</a>
+    <div class="screen welcome-screen active" id="welcomeScreen">
+      <div class="content-box">
+        <h1 class="main-title">Добро пожаловать в семью свечеваров</h1>
+        <button class="btn main-btn" id="enterButton">Войти</button>
+        <a href="https://candlefamily.ru" target="_blank" class="btn site-btn">Наш сайт</a>
       </div>
     </div>
 
     <!-- Основное меню -->
-    <div class="main-menu" id="mainMenu">
-      <div class="content-wrapper">
-        <button class="menu-button" data-section="about">О нас</button>
-        <button class="menu-button" data-section="social">Наши соц сети</button>
-        <button class="menu-button" data-section="products">Наша продукция</button>
-        <a href="https://candlefamily.ru" target="_blank" class="action-button menu-action-button">Наш сайт</a>
+    <div class="screen menu-screen" id="mainMenu">
+      <div class="content-box">
+        <button class="btn menu-btn" data-section="about">О нас</button>
+        <button class="btn menu-btn" data-section="social">Наши соц сети</button>
+        <button class="btn menu-btn" data-section="products">Наша продукция</button>
+        <a href="https://candlefamily.ru" target="_blank" class="btn site-btn">Наш сайт</a>
       </div>
     </div>
 
@@ -32,17 +32,17 @@
     <div class="content-section" id="aboutSection">
       <h2>О нас</h2>
       <p>Здесь пока пусто, но нам есть что рассказать</p>
-      <button class="back-button" data-back="mainMenu">Назад</button>
+      <button class="btn back-btn" data-back="mainMenu">Назад</button>
     </div>
 
     <!-- Секция "Соц сети" -->
     <div class="content-section" id="socialSection">
       <h2>Наши соц сети</h2>
       <div class="social-links">
-        <a href="https://t.me/thecandlefamily" target="_blank" class="social-link">Телеграм</a>
-        <a href="https://vk.com/candlefamily" target="_blank" class="social-link">ВКонтакте</a>
+        <a href="https://t.me/thecandlefamily" target="_blank" class="btn social-btn">Телеграм</a>
+        <a href="https://vk.com/candlefamily" target="_blank" class="btn social-btn">ВКонтакте</a>
       </div>
-      <button class="back-button" data-back="mainMenu">Назад</button>
+      <button class="btn back-btn" data-back="mainMenu">Назад</button>
     </div>
 
     <!-- Секция "Продукция" -->
@@ -66,7 +66,7 @@
           <span>Avito</span>
         </a>
       </div>
-      <button class="back-button" data-back="mainMenu">Назад</button>
+      <button class="btn back-btn" data-back="mainMenu">Назад</button>
     </div>
   </div>
 
