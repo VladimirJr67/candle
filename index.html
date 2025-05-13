@@ -4,27 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Семья свечеваров</title>
+  <style>
+    /* Временные стили для проверки */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="app">
     <!-- Приветственный экран -->
-    <div class="screen welcome-screen active" id="welcomeScreen">
+    <div class="welcome-screen active" id="welcomeScreen">
       <div class="content-box">
-        <h1 class="main-title">Добро пожаловать в семью свечеваров</h1>
-        <button class="btn" id="enterButton">Войти</button>
-        <a href="https://candlefamily.ru" target="_blank" class="btn site-link">Наш сайт</a>
+        <h1>Добро пожаловать в семью свечеваров</h1>
+        <button id="enterButton" class="action-btn">Войти</button>
+        <a href="https://candlefamily.ru" class="action-btn site-btn">Наш сайт</a>
       </div>
     </div>
 
     <!-- Основное меню -->
-    <div class="screen menu-screen" id="mainMenu">
+    <div class="menu-screen" id="mainMenu">
       <div class="content-box">
-        <button class="btn menu-btn" data-section="about">О нас</button>
-        <button class="btn menu-btn" data-section="social">Наши соц сети</button>
-        <button class="btn menu-btn" data-section="products">Наша продукция</button>
-        <a href="https://candlefamily.ru" target="_blank" class="btn site-link">Наш сайт</a>
+        <button data-section="about" class="menu-btn">О нас</button>
+        <button data-section="social" class="menu-btn">Наши соц сети</button>
+        <button data-section="products" class="menu-btn">Наша продукция</button>
+        <a href="https://candlefamily.ru" class="action-btn site-btn">Наш сайт</a>
       </div>
     </div>
 
@@ -33,19 +44,19 @@
       <div class="content-box">
         <h2>О нас</h2>
         <p>Здесь пока пусто, но нам есть что рассказать</p>
-        <button class="btn back-btn" data-back="mainMenu">Назад</button>
+        <button data-back="mainMenu" class="action-btn">Назад</button>
       </div>
     </div>
 
     <!-- Секция "Соцсети" -->
     <div class="content-section" id="socialSection">
       <div class="content-box">
-        <h2>Наши соцсети</h2>
+        <h2>Наши соц сети</h2>
         <div class="btn-group">
-          <a href="https://t.me/thecandlefamily" class="btn social-btn">Телеграм</a>
-          <a href="https://vk.com/candlefamily" class="btn social-btn">ВКонтакте</a>
+          <a href="https://t.me/thecandlefamily" class="social-btn">Телеграм</a>
+          <a href="https://vk.com/candlefamily" class="social-btn">ВКонтакте</a>
         </div>
-        <button class="btn back-btn" data-back="mainMenu">Назад</button>
+        <button data-back="mainMenu" class="action-btn">Назад</button>
       </div>
     </div>
 
@@ -53,14 +64,14 @@
     <div class="content-section" id="productsSection">
       <div class="content-box">
         <h2>Наша продукция</h2>
-        <div class="marketplace-links">
-          <a href="https://www.wildberries.ru/brands/311067087-semya-svechevarov" class="marketplace-link">
-            <img src="img/wb.png" alt="Wildberries" width="40" height="40">
+        <div class="marketplaces">
+          <a href="https://www.wildberries.ru/brands/311067087-semya-svechevarov" class="marketplace">
+            <img src="img/wb.png" alt="Wildberries">
             <span>Wildberries</span>
           </a>
           <!-- Остальные маркетплейсы -->
         </div>
-        <button class="btn back-btn" data-back="mainMenu">Назад</button>
+        <button data-back="mainMenu" class="action-btn">Назад</button>
       </div>
     </div>
   </div>

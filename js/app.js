@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Элементы интерфейса
+  // Все элементы
   const screens = {
     welcome: document.getElementById('welcomeScreen'),
     menu: document.getElementById('mainMenu'),
@@ -10,27 +10,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Инициализация
   function init() {
-    // Показываем welcome-экран
-    screens.welcome.classList.add('active');
-    
-    // Обработчики для основной навигации
+    // Кнопка "Войти"
     document.getElementById('enterButton').addEventListener('click', function() {
       switchScreen('welcome', 'menu');
     });
-    
-    // Обработчики кнопок меню
+
+    // Кнопки меню
     document.querySelectorAll('.menu-btn').forEach(btn => {
       btn.addEventListener('click', function() {
-        const target = this.dataset.section;
-        switchScreen('menu', target);
+        switchScreen('menu', this.dataset.section);
       });
     });
-    
+
     // Кнопки "Назад"
-    document.querySelectorAll('.back-btn').forEach(btn => {
+    document.querySelectorAll('[data-back]').forEach(btn => {
       btn.addEventListener('click', function() {
-        const target = this.dataset.back;
-        switchScreen(Object.keys(screens).find(key => screens[key].classList.contains('active')), target);
+        switchScreen(getCurrentScreen(), this.dataset.back);
       });
     });
   }
@@ -41,5 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
     screens[to].classList.add('active');
   }
 
+  // Получение текущего экрана
+  function getCurrentScreen() {
+    return Object.keys(screens).find(key => screens[key].classList.contains('active'));
+  }
+
+  // Запуск
   init();
 });
