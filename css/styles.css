@@ -29,7 +29,30 @@ body {
   overflow: hidden;
 }
 
-/* Приветственный экран */
+/* Анимации из Animista */
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-fwd-top {
+  0% {
+    transform: translateY(-20px) translateZ(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) translateZ(0);
+    opacity: 1;
+  }
+}
+
+/* Приветственный экран с анимациями */
 .welcome-screen {
   position: absolute;
   top: 0;
@@ -41,25 +64,34 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
   padding: 20px;
   box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.1s ease; /* Базовое появление */
 }
 
 .welcome-screen.active {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .welcome-screen h1 {
   font-size: 1.8rem;
   margin-bottom: 30px;
   font-weight: 600;
+  animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
-/* Основное меню (идеальное центрирование) */
+.welcome-screen .enter-button {
+  animation: slide-fwd-top 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-delay: 0.5s;
+}
+
+.welcome-screen .website-link {
+  animation: slide-fwd-top 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation-delay: 0.8s;
+}
+
+/* Основное меню */
 .main-menu {
   position: absolute;
   top: 0;
@@ -79,7 +111,7 @@ body {
   display: flex;
 }
 
-/* Общие стили для всех кнопок */
+/* Общие стили кнопок */
 .enter-button, 
 .menu-button, 
 .back-button, 
@@ -121,7 +153,7 @@ body {
   color: white;
 }
 
-/* Секции контента (плавное появление) */
+/* Секции контента */
 .content-section {
   position: absolute;
   top: 50%;
@@ -175,9 +207,23 @@ body {
   object-fit: contain;
 }
 
-/* Анимации при наведении */
+/* Ховер-эффекты */
 button:hover, 
 a:hover {
   transform: translateY(-2px);
   opacity: 0.9;
+}
+
+/* Оптимизация для маленьких экранов */
+@media (max-width: 400px) {
+  .welcome-screen h1 {
+    font-size: 1.5rem;
+  }
+  .enter-button, 
+  .menu-button, 
+  .back-button, 
+  .website-link {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
 }
