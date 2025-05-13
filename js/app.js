@@ -3,69 +3,80 @@ const tg = window.Telegram.WebApp;
 tg.expand();
 
 // DOM элементы
-const welcomeScreen = document.getElementById('welcomeScreen');
-const mainMenu = document.getElementById('mainMenu');
-const enterButton = document.getElementById('enterButton');
-const menuButtons = document.querySelectorAll('.menu-button');
-const contentSections = document.querySelectorAll('.content-section');
-const backButtons = document.querySelectorAll('.back-button');
+const elements = {
+  welcomeScreen: document.getElementById('welcomeScreen'),
+  mainMenu: document.getElementById('mainMenu'),
+  enterButton: document.getElementById('enterButton'),
+  menuButtons: document.querySelectorAll('.menu-button'),
+  contentSections: document.querySelectorAll('.content-section'),
+  backButtons: document.querySelectorAll('.back-button')
+};
 
-// Оптимизированная функция перехода
-function transitionTo(element) {
-  element.style.display = 'flex'; // Используем flex вместо block для корректного центрирования
-  element.style.opacity = '0'; // Сбрасываем opacity перед анимацией
-  
-  // Даем время для применения стилей
-  requestAnimationFrame(() => {
+// Показать элемент с анимацией
+function showElement(element) {
+  element.style.display = element === elements.welcomeScreen || element === elements.mainMenu ? 'flex' : 'block';
+  setTimeout(() => {
     element.classList.add('active');
-  });
+  }, 10);
 }
 
-// Оптимизированная функция скрытия
-function transitionFrom(element) {
+// Скрыть элемент с анимацией
+function hideElement(element, callback) {
   element.classList.remove('active');
-  
-  // Ждем завершения анимации
   setTimeout(() => {
     if (!element.classList.contains('active')) {
       element.style.display = 'none';
     }
-  }, 400); // Сократил время до 400ms (совпадает с CSS)
+    if (callback) callback();
+  }, 400);
 }
 
-// Обработчик кнопки "Войти"
-enterButton.addEventListener('click', () => {
-  transitionFrom(welcomeScreen);
-  transitionTo(mainMenu);
-});
-
-// Обработчики кнопок меню
-menuButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const targetSection = button.getAttribute('data-section');
-    transitionFrom(mainMenu);
-    
-    const section = document.getElementById(`${targetSection}Section`);
-    transitionTo(section);
+// Инициализация приложения
+function initApp() {
+  // Сначала скрываем все элементы
+  elements.contentSections.forEach(section => {
+    section.style.display = 'none';
   });
-});
-
-// Обработчики кнопок "Назад"
-backButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const targetSection = button.closest('.content-section');
-    transitionFrom(targetSection);
-    transitionTo(mainMenu);
-  });
-});
-
-// Инициализация
-document.addEventListener('DOMContentLoaded', () => {
-  // Показываем приветственный экран с небольшой задержкой
+  elements.mainMenu.style.display = 'none';
+  
+  // Показываем приветственный экран
   setTimeout(() => {
-    welcomeScreen.style.display = 'flex';
-    requestAnimationFrame(() => {
-      welcomeScreen.classList.add('active');
-    });
+    showElement(elements.welcomeScreen);
   }, 100);
+}
+
+// Настройка обработчиков событий
+function setupEventListeners() {
+  // Кнопка "Войти"
+  elements.enterButton.addEventListener('click', () => {
+    hideElement(elements.welcomeScreen, () => {
+      showElement(elements.mainMenu);
+    });
+  });
+
+  // Кнопки меню
+  elements.menuButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetSection = document.getElementById(`${button.dataset.section}Section`);
+      hideElement(elements.mainMenu, () => {
+        showElement(targetSection);
+      });
+    });
+  });
+
+  // Кнопки "Назад"
+  elements.backButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const currentSection = button.closest('.content-section');
+      hideElement(currentSection, () => {
+        showElement(elements.mainMenu);
+      });
+    });
+  });
+}
+
+// Запуск приложения
+document.addEventListener('DOMContentLoaded', () => {
+  initApp();
+  setupEventListeners();
 });
