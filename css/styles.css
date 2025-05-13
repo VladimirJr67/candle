@@ -58,6 +58,31 @@ body {
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
+/* Стили заголовка */
+.content-box h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 25px;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Кнопки */
 .action-btn,
 .menu-btn,
@@ -75,6 +100,10 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.3s;
 }
 
 .action-btn {
@@ -103,7 +132,7 @@ body {
 .marketplaces {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   margin: 20px 0;
 }
 
@@ -111,15 +140,28 @@ body {
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 12px;
+  padding: 15px;
   background: var(--white);
   border-radius: 12px;
   text-decoration: none;
   color: var(--dark);
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.marketplace:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: var(--light-pink);
 }
 
 .marketplace img {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
+}
+
+.marketplace span {
+  font-weight: 500;
+  font-size: 1.1rem;
 }
