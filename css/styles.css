@@ -1,3 +1,11 @@
+/* Сброс стилей */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Основные переменные */
 :root {
   --primary: #ffd1dc;
   --accent: #ff9eb5;
@@ -8,17 +16,14 @@
 /* Базовые стили */
 body {
   font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  padding: 0;
   min-height: 100vh;
-  -webkit-tap-highlight-color: transparent;
+  background-color: #f5f5f5; /* Фон по умолчанию */
 }
 
 .app {
+  position: relative;
   width: 100%;
   min-height: 100vh;
-  position: relative;
-  overflow: hidden;
 }
 
 /* Общие стили экранов */
@@ -26,11 +31,11 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  box-sizing: border-box;
+  display: none;
 }
 
 .screen.active {
@@ -39,36 +44,31 @@ body {
 
 /* Фоновые изображения */
 .welcome-screen {
-  background: url('../img/bg-welcome.png') center/cover no-repeat;
+  background: url('../img/bg-main.png') center/cover no-repeat;
 }
 
 .menu-screen {
   background: url('../img/bg-menu.png') center/cover no-repeat;
 }
 
+/* Контейнер контента */
 .content-box {
-  background: rgba(255, 255, 255, 0.93);
-  border-radius: 20px;
-  padding: 30px;
   width: 100%;
   max-width: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-/* Анимация текста */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
+/* Заголовок */
 .main-title {
   font-size: 1.7rem;
   font-weight: 700;
   color: var(--text);
-  margin: 0 0 30px 0;
+  margin-bottom: 30px;
   line-height: 1.4;
-  animation: fadeIn 0.8s ease-out;
 }
 
 /* Стили кнопок */
@@ -76,123 +76,38 @@ body {
   display: block;
   width: 100%;
   padding: 14px;
-  margin: 12px 0;
+  margin: 10px 0;
   border-radius: 25px;
   font-size: 1rem;
   font-weight: 500;
+  text-align: center;
   text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
 }
 
-.main-btn {
+/* Основная кнопка */
+.btn:not(.site-link) {
   background: var(--accent);
   color: var(--white);
+  box-shadow: 0 4px 10px rgba(255, 158, 181, 0.4);
 }
 
-.menu-btn {
-  background: var(--white);
-  color: var(--text);
-  border: 2px solid var(--primary);
-}
-
-.site-btn {
+/* Кнопка "Наш сайт" */
+.site-link {
   background: var(--white);
   color: var(--text);
   border: 2px solid var(--accent);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.back-btn {
-  background: var(--accent);
-  color: var(--white);
-  margin-top: 20px;
-}
-
-.social-btn {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: var(--white);
-}
-
+/* Ховер-эффекты */
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
-/* Стили секций контента */
-.content-section {
-  position: absolute;
-  width: calc(100% - 40px);
-  max-width: 400px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  padding: 25px;
-  box-sizing: border-box;
-  display: none;
-  text-align: center;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-.content-section.active {
-  display: block;
-}
-
-.content-section h2 {
-  margin-top: 0;
-  color: var(--text);
-  font-size: 1.5rem;
-}
-
-/* Стили маркетплейсов */
-.marketplace-links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: 20px 0;
-}
-
-.marketplace-link {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 12px 15px;
-  background: white;
-  border-radius: 15px;
-  text-decoration: none;
-  color: var(--text);
-  transition: transform 0.3s ease;
-}
-
-.marketplace-link:hover {
-  transform: translateY(-3px);
-}
-
-.marketplace-link img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
-}
-
-/* Адаптация для мобильных */
-@media (max-width: 400px) {
-  .content-box {
-    padding: 25px;
-  }
-  
-  .main-title {
-    font-size: 1.4rem;
-  }
-  
-  .btn {
-    padding: 12px;
-  }
-  
-  .content-section {
-    width: calc(100% - 30px);
-    padding: 20px;
-  }
+.btn:active {
+  transform: translateY(1px);
 }
