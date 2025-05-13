@@ -1,82 +1,45 @@
-// Инициализация Telegram WebApp
-const tg = window.Telegram.WebApp;
-tg.expand();
+document.addEventListener('DOMContentLoaded', function() {
+  // Элементы интерфейса
+  const screens = {
+    welcome: document.getElementById('welcomeScreen'),
+    menu: document.getElementById('mainMenu'),
+    about: document.getElementById('aboutSection'),
+    social: document.getElementById('socialSection'),
+    products: document.getElementById('productsSection')
+  };
 
-// DOM элементы
-const elements = {
-  welcomeScreen: document.getElementById('welcomeScreen'),
-  mainMenu: document.getElementById('mainMenu'),
-  enterButton: document.getElementById('enterButton'),
-  menuButtons: document.querySelectorAll('.menu-button'),
-  contentSections: document.querySelectorAll('.content-section'),
-  backButtons: document.querySelectorAll('.back-button')
-};
-
-// Показать элемент с анимацией
-function showElement(element) {
-  element.style.display = element === elements.welcomeScreen || element === elements.mainMenu ? 'flex' : 'block';
-  setTimeout(() => {
-    element.classList.add('active');
-  }, 10);
-}
-
-// Скрыть элемент с анимацией
-function hideElement(element, callback) {
-  element.classList.remove('active');
-  setTimeout(() => {
-    if (!element.classList.contains('active')) {
-      element.style.display = 'none';
-    }
-    if (callback) callback();
-  }, 400);
-}
-
-// Инициализация приложения
-function initApp() {
-  // Сначала скрываем все элементы
-  elements.contentSections.forEach(section => {
-    section.style.display = 'none';
-  });
-  elements.mainMenu.style.display = 'none';
-  
-  // Показываем приветственный экран
-  setTimeout(() => {
-    showElement(elements.welcomeScreen);
-  }, 100);
-}
-
-// Настройка обработчиков событий
-function setupEventListeners() {
-  // Кнопка "Войти"
-  elements.enterButton.addEventListener('click', () => {
-    hideElement(elements.welcomeScreen, () => {
-      showElement(elements.mainMenu);
+  // Инициализация
+  function init() {
+    // Показываем welcome-экран
+    screens.welcome.classList.add('active');
+    
+    // Обработчики для основной навигации
+    document.getElementById('enterButton').addEventListener('click', function() {
+      switchScreen('welcome', 'menu');
     });
-  });
-
-  // Кнопки меню
-  elements.menuButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const targetSection = document.getElementById(`${button.dataset.section}Section`);
-      hideElement(elements.mainMenu, () => {
-        showElement(targetSection);
+    
+    // Обработчики кнопок меню
+    document.querySelectorAll('.menu-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const target = this.dataset.section;
+        switchScreen('menu', target);
       });
     });
-  });
-
-  // Кнопки "Назад"
-  elements.backButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const currentSection = button.closest('.content-section');
-      hideElement(currentSection, () => {
-        showElement(elements.mainMenu);
+    
+    // Кнопки "Назад"
+    document.querySelectorAll('.back-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const target = this.dataset.back;
+        switchScreen(Object.keys(screens).find(key => screens[key].classList.contains('active')), target);
       });
     });
-  });
-}
+  }
 
-// Запуск приложения
-document.addEventListener('DOMContentLoaded', () => {
-  initApp();
-  setupEventListeners();
+  // Переключение экранов
+  function switchScreen(from, to) {
+    screens[from].classList.remove('active');
+    screens[to].classList.add('active');
+  }
+
+  init();
 });
